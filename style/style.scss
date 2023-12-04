@@ -20,29 +20,19 @@ body.bonus {
     }
 }
 
-@keyframes DaniCcimo {
-    from {
-        color: rgb(25, 25, 25);
-    }
-    
-    to {
-        color: yellow;
-        text-shadow: 0px 0px 25px yellow;
-    }
-}
-
 body.sunset {
     background-color: skyblue;
+    overflow: hidden;
     .sun {
         position: absolute;
-        top: 15%;
+        top: 10%;
         left: 5%;
         padding: 100px;
         border-radius: 50%;
         box-shadow: 0px 0px 15px 20px yellow;
         background-color: yellow;
         transition: all 1s ease-in-out;
-        animation: sunset 6s ease-in-out ;
+        animation: sunMove 15s infinite;
         &:hover {
             transform: rotate(360deg);
         }
@@ -72,59 +62,354 @@ body.sunset {
         .mouth {
             position: absolute;
             top: 70%;
-            left: 50%;
+            left: 37%;
             font-weight: bold;
             font-size: 70px;
             transform: rotate(90deg) translateX(-50%);
         }
     }
-    .bonus {
-        position: absolute;
-        top: 87%;
-        left: 60%;
-        display: block;
-        font-size: 100px;
-        text-decoration: none;
-        color: green;
-    }
-    .page2 {
-        position: absolute;
-        top: 87%;
-        left: 30%;
-        display: block;
-        font-size: 100px;
-        text-decoration: none;
-        color: green;
-    }
-}
 
-@keyframes sunset {
-    0% {
-        top: 15%;
-        left: 5%;
-    }
 
-    33% {
-        top: 15%;
-        left: 75%;
-        transform: scale(1.5) rotate(360deg);
+    .cloud {
+        display: flex;
+        position: absolute;
+        top: 26%;
+        left: 4%;
+        &:nth-child(2) {
+            animation: cloud 8s infinite;
+        }
+        &:nth-child(3) {
+            animation: cloud 6s infinite;
+        }
+        &:nth-child(4) {
+            animation: cloud 10s infinite;
+        }
+        &:nth-child(5) {
+            animation: cloud 7s infinite;
+        }
+        .circle-cloud {
+            width: 80px;
+            height: 80px;
+            background: rgb(255, 255, 255);
+            border-radius: 50%;
+        }
+        .circle-cloud.up {
+            position: absolute;
+            top: -37px;
+            left: 20px;
+            &:nth-child(5) {
+                left: 80px;
+            }
+            &:nth-child(6) {
+                left: 140px;
+            }
+        }
+        .circle-cloud.down {
+            position: absolute;
+            top: 37px;
+            left: 20px;
+            &:nth-child(7) {
+                left: 80px;
+            }
+            &:nth-child(8) {
+                left: 140px;
+            }
+        }
+        &:nth-child(3) {
+            top: 20%;
+            left: 20%;
+        }
+        &:nth-child(4) {
+            top: 27%;
+            left: 35%;
+        }
+        &:nth-child(5) {
+            top: 20%;
+            left: 50%;
+        }
+    }
+    .cloud.dark {
+        top: 35%;
+        left: 73%;
+        z-index: 8;
+        .circle-cloud {
+            background-color: gray;
+            &:nth-child(4) {
+                position: relative;
+                left: -20px;
+            }
+        }
+        .circle-cloud.up {
+            top: -37px;
+            left: 20px;
+            &:nth-child(6) {
+                left: 80px;
+            }
+            &:nth-child(7) {
+                left: 140px;
+            }
+            &:nth-child(8) {
+                left: 200px;
+            }
+        }
+        .circle-cloud.down {
+            top: 37px;
+            left: 20px;
+            &:nth-child(9) {
+                left: 80px;
+            }
+            &:nth-child(10) {
+                left: 140px;
+            }
+            &:nth-child(11) {
+                left: 200px;
+            }
+        }
+        .lightning-wrap {
+            display: none;
+            position: absolute;
+            top: 125px;
+            left: 80px;
+            &.lightningShow {
+                display: block;
+            }
+            .lightning {
+                position: absolute;
+                top: 0;
+                left: 0;
+                &:nth-child(1) {
+                    width: 0;
+	                height: 0;
+	                border-left: 30px solid transparent;
+	                border-right: 30px solid transparent;
+	                border-bottom: 150px solid yellow;
+                    transform: skew(-10deg) rotate(10deg);
+                }
+                &:nth-child(2) {
+                    top: 140px;
+                    left: -37px;
+                    width: 100px;
+                    height: 50px;
+                    transform: skew(-30deg);
+                    background: yellow;
+                }
+                &:nth-child(3) {
+                    top: 180px;
+                    left: -34px;
+                    width: 0;
+	                height: 0;
+	                border-left: 30px solid transparent;
+	                border-right: 30px solid transparent;
+	                border-bottom: 150px solid yellow;
+                    transform: skew(-10deg) rotate(190deg);
+                }
+            }
+        }
+    }
+    .rabbit {
+        position: absolute;
+        top: 70%;
+        left: 15%;
+        transform: scaleX(-1);
+        animation: rabbitMove 5s infinite;
+        z-index: 10;
+        img {
+            height: 140px;
+        }
     }
     
-    66% {
-        top: 50%;
+
+    .grow {
+        display: flex;
+        .circle-left {
+            position: absolute;
+            top: 70%;
+            left: -50%;
+            width: 2700px;
+	        height: 1500px;
+            border: 1px solid black;
+	        background: green;
+	        border-radius: 50%;
+            
+        }
+        .circle-right {
+            position: absolute;
+            top: 70%;
+            left: 10%;
+            width: 2500px;
+            height: 1500px;
+            border: 1px solid black;
+            background: green;
+            border-radius: 50%;
+            
+        }
+    }
+    .link {
+        position: absolute;
         left: 50%;
-        transform: scale(2) translateX(-30%);
+        transform: translateX(-50%);
+        display: flex;
+        gap: 100px;
+        .bonus {
+            display: block;
+            font-size: 100px;
+            text-decoration: none;
+            color: green;
+        }
+        .page2 {
+            display: block;
+            font-size: 100px;
+            text-decoration: none;
+            color: green;
+        }
     }
 }
 
 body.page2 {
-    * {
-        display: block;
-        margin: 45px 30px;
-        border-radius: 50px;
+    .wrap {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        width: fit-content;
+        margin: 0 auto;
+        margin-top: 20px;
+        padding: 10px;
+        border: 4px solid black;
+        border-radius: 20px;
+        background-color: bisque;
+        div {
+            margin: 10px;
+        }
+        .googleMap-wrap {
+            margin-right: 0;
+            padding-right: 10px;
+            border-right: 2px solid black;
+            iframe {
+                border-radius: 20px;
+            }
+        }
+        .video-wrap {
+            video {
+                height: 600px;
+                border-radius: 20px;
+            }
+        }
+        .audio-wrap {
+            flex: 0 0 77%;
+            margin-top: 0;
+            padding-top: 10px;
+            border-top: 2px solid black;
+            audio {
+                display: block;
+                margin: 0 auto;
+                border-radius: 20px;
+            }
+        }
     }
-    audio {
-        border: 3px solid black;
-        border-radius: 50px;
+}
+
+@keyframes DaniCcimo {
+    from {
+        color: rgb(25, 25, 25);
+    }
+    to {
+        color: yellow;
+        text-shadow: 0px 0px 25px yellow;
+    }
+}
+
+@keyframes cloud {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(10%);
+    }
+}
+
+@keyframes rabbitMove {
+    0% {
+        top: 70%;
+        left: 15%;
+        transform: scaleX(-1);
+    }
+    10% {
+        top: 60%;
+        transform: scaleX(-1) scale(1.25);
+    }
+    20% {
+        top: 80%;
+        left: 40%;
+        transform: scaleX(-1) scale(1.5);
+    }
+    30% {
+        top: 70%;
+        transform: scaleX(-1) scale(1.5);
+    }
+    40% {
+        top: 80%;
+        left: 65%;
+        transform: scaleX(-1) scale(1.5);
+    }
+    50% {
+        top: 80%;
+        left: 65%;
+        transform: scaleX(1) scale(1.5);
+    }
+    60% {
+        top: 70%;
+        transform: scaleX(1) scale(1.5);
+    }
+    70% {
+        top: 80%;
+        left: 40%;
+        transform: scaleX(1) scale(1.5);
+    }
+    80% {
+        top: 60%;
+        transform: scaleX(1) scale(1.25);
+    }
+    90% {
+        top: 70%;
+        left: 15%;
+        transform: scaleX(1);
+    }
+}
+
+@keyframes sunMove {
+    0% {
+        top: 10%;
+        left: 5%;
+        transform: scale(1);
+    }
+    12% {
+        top: 45%;
+        left: 45%;
+        transform: scale(3.5) skew(-30deg);
+    }
+    25% {
+        top: 45%;
+        left: 45%;
+        transform: scale(3.5) skew(30deg);
+    }
+    50% {
+        top: 10%;
+        left: 85%;
+        transform: scale(1);
+    }
+    62% {
+        top: 45%;
+        left: 45%;
+        transform: scale(3.5) skew(30deg);
+    }
+    75% {
+        top: 45%;
+        left: 45%;
+        transform: scale(3.5) skew(-30deg);
+    }
+    100% {
+        top: 10%;
+        left: 5%;
+        transform: scale(1);
     }
 }
